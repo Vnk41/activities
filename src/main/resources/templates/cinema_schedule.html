@@ -6,5 +6,16 @@
 </head>
 <body>
     <header th:insert="blocks/header :: header"></header>
+    <div>
+        <h4> Расписание сеансов </h4>
+        <div th:each="el : ${movieshows}">
+            <label> <b>Название: </b></label>
+            <div th:text="${el.movie_russian_title}"></div>
+            <label> <b>Дата и время сеанса:</b></label>
+            <div th:text="${el.datetime}"></div>
+            <a th:href="@{'/cinema_schedule/' + ${el.id}}"> Перейти к покупке билета </a>
+            <p></p>
+        </div>
+    </div>
 </body>
 </html>

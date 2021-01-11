@@ -9,12 +9,18 @@
     <div>
         <h4> Список мероприятий </h4>
         <div th:each="el : ${activities}">
+            <label> <b>Название: </b></label>
             <div th:text="${el.title}"></div>
+            <label> <b>Место проведения: </b></label>
             <div th:text="${el.place}"></div>
+            <label> <b>Адрес: </b></label>
             <div th:text=" ${el.address}"></div>
+            <label> <b>Описание: </b></label>
             <div th:text=" ${el.description}"></div>
+            <label> <b>Дата и время проведения:</b></label>
             <div th:text="${el.date}"></div>
             <div th:text=" ${el.time}"></div>
+            <label> <b>Все билеты:</b></label>
             <div th:text=" ${el.all_tickets}"></div>
             <div th:text=" ${el.free_tickets}"></div>
             <a th:href="@{'/activities_schedule/' + ${el.id}}"> Перейти к покупке билета </a>
