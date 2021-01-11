@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Раписание мероприятий</title>
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <div>
+        <h4> Список мероприятий </h4>
+        <div th:each="el : ${activities}">
+            <div th:text="${el.title}"></div>
+            <div th:text="${el.place}"></div>
+            <div th:text=" ${el.address}"></div>
+            <div th:text=" ${el.description}"></div>
+            <div th:text="${el.date}"></div>
+            <div th:text=" ${el.time}"></div>
+            <div th:text=" ${el.all_tickets}"></div>
+            <div th:text=" ${el.free_tickets}"></div>
+            <a th:href="@{'/activities_schedule/' + ${el.id}}"> Перейти к покупке билета </a>
+            <p></p>
+        </div>
+    </div>
+</body>
+</html>
