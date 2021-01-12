@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавьте новый киносеанс</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <h1> Заполните форму ввода </h1>
+    <h1> Добавленный сеанс появится на странице "Расписание кинотеатра" </h1>
+    <form th:action="@{/add_movieshow}" method="post">
+
+        <div><label> Название фильма по-русски: <input type="text" name="movie_russian_title" width="150" /> </label><br></div>
+        <div><label> Название фильма по-английски: <input type="text" name="movie_english_title"/> </label><br></div>
+        <div><label> Режиссер: <input type="text" name="movie_director"/> </label><br></div>
+        <div><label> Актеры: <input type="text" name="movie_actors"/> </label><br></div>
+        <div><label> Год релиза: <input type="text" name="movie_year" width="150" /> </label><br></div>
+        <div><label> Дата и время сеанса: <input type="text" name="datetime"/> </label><br></div>
+        <div><label> Время (хронометраж фильма): <input type="text" name="running_time"/> </label><br></div>
+        <div><label> Описание: <input type="text" name="description"/> </label><br></div>
+        <div><input type="submit" value="Добавить мероприятие"/></div>
+    </form>
+</body>

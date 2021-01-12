@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Раписание кинотеатра</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div>
+    <h4> Куплены билеты на сеансы: </h4>
+    <div th:each="el : ${movieShow}">
+        <label> <b>Название: </b></label>
+        <div th:text="${el.movie_russian_title}"></div>
+        <label> <b>Оригинальное название: </b></label>
+        <div th:text="${el.movie_english_title}"></div>
+        <label> <b>Режиссер: </b></label>
+        <div th:text="${el.movie_director}"></div>
+        <label> <b>Актеры: </b></label>
+        <div th:text="${el.movie_actors}"></div>
+        <label> <b>Продолжительность: </b></label>
+        <div th:text="${el.running_time}"></div>
+        <label> <b>Описание фильма: </b></label>
+        <div th:text="${el.description}"></div>
+        <label> <b>Дата и время сеанса:</b></label>
+        <div th:text="${el.datetime}"></div>
+    </div>
+</div>
+</body>
+</html>

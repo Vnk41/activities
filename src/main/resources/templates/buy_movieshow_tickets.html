@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Раписание мероприятий</title>
+</head>
+<style>
+    p{
+        border-bottom: 2px solid maroon;
+        padding-bottom: 5px;
+    }
+</style>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div>
+    <h4> Детали фильма </h4>
+    <div th:each="el : ${movieShow}">
+        <label> <b>Название: </b></label>
+        <div th:text="${el.movie_russian_title}"></div>
+        <label> <b>Оригинальное название: </b></label>
+        <div th:text="${el.movie_english_title}"></div>
+        <label> <b>Режиссер: </b></label>
+        <div th:text="${el.movie_director}"></div>
+        <label> <b>Актеры: </b></label>
+        <div th:text="${el.movie_actors}"></div>
+        <label> <b>Продолжительность: </b></label>
+        <div th:text="${el.running_time}"></div>
+        <label> <b>Описание фильма: </b></label>
+        <div th:text="${el.description}"></div>
+        <label> <b>Дата и время сеанса:</b></label>
+        <div th:text="${el.datetime}"></div>
+        <form th:action="@{/cinema_schedule/} + ${el.id}" method="post">
+            <div><label> Ряд: <input type="text" name="row" width="150" /> </label><br></div>
+            <div><label> Место: <input type="text" name="col"/> </label><br></div>
+            <div><input type="submit" value="Купить билет"/></div>
+        <p></p>
+    </div>
+    </form>
+</div>
+</body>
+</html>
