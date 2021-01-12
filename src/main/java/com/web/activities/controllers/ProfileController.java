@@ -1,6 +1,7 @@
 package com.web.activities.controllers;
 
 import com.web.activities.controllers.models.MovieShow;
+import com.web.activities.controllers.models.TicketMovieShow;
 import com.web.activities.controllers.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,11 +18,16 @@ public class ProfileController {
 
     @Autowired
     private TicketMovieShowRepo ticketMovieShowRepo;
+    //private Optional<TicketMovieShow> TicketsMovie;
+    //private TicketMovieShow TicketsMovie;
+
     @GetMapping("/profile")
     public String profile(@AuthenticationPrincipal User user, Model model)
     {
-        Optional<MovieShow> movieshows = movieShowRepo.findByMovie_year(2020);
-        model.addAttribute("movieshows", movieshows);
+        Iterable<TicketMovieShow> TicketsMovie = ticketMovieShowRepo.findByUserId(user.getId());
+
+        model.addAttribute("TicketsMovie", TicketsMovie);
+        model.addAttribute("Username", user.getUsername());
         return "profile";
     }
 }
