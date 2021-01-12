@@ -1,22 +1,37 @@
 <div th:fragment="header">
     <style>
     body{
-        background-color: azure;
-        font-size: 15px;
+
+        font-size: 20px;
+        text-align: center;
     }
+    a{
+        color: black;
+        border: black;
+        padding: 2px;
+        font: bold;
+    }
+    a:hover{
+        color: red;
+    }
+     p{
+         border-bottom: 2px solid maroon;
+         padding-bottom: 5px;
+     }
     </style>
     <div>
         <form th:action="@{/logout}" method="post">
-            <input type = "submit" value = "Sign Out"/>
+            <input type = "submit" value = "Выйти из профиля"/>
         </form>
     </div>
 <H1> Развлекательный центр "Кристалл" </H1>
     <a HREF="/"> Главная страница </a>
+    <a HREF="/profile"> Мой профиль </a>
     <a HREF="/activities_schedule"> Расписание мероприятий </a>
     <a HREF="/cinema_schedule"> Расписание кинотеатра </a>
     <a HREF="/add_activity"> Добавление мероприятия </a>
     <a HREF="/add_movieshow"> Добавление киносеанса </a>
     <a HREF="/about"> О центре </a>
-    <a HREF="/login"> Авторизация и регистрация </a>
+    <a HREF="/login"> Авторизация </a>
 <!-- <p th:text="'Hello, ' + ${title} + '!'" /> -->
 </div>

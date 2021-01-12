@@ -7,6 +7,7 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div>
+
     <h4> Список мероприятий </h4>
     <div th:each="el : ${activity}">
         <div th:text="${el.title}"></div>

@@ -4,12 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <style>
-        body{
-            background-color: azure;
-            font-size: 15px;
-        }
-    </style>
+    <header th:insert="blocks/header :: header"> </header>
     <h1> Заполните форму ввода </h1>
     <h1> Добавленное мероприятие появится на странице "Расписание мероприятия" </h1>
     <form th:action="@{/add_activity}" method="post">
