@@ -11,52 +11,38 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "title", length = 100,nullable = true)
+    @Column(name = "title", length = 100,nullable = false)
     private String title;
-    @Column(name = "place", length = 100,nullable = true)
+    @Column(name = "place", length = 100,nullable = false)
     private String place;
-    @Column(name = "address", length = 100,nullable = true)
+    @Column(name = "address", length = 100,nullable = false)
     private String address;
-    @Column(name = "description", length = 1000,nullable = true)
+    @Column(name = "description", length = 1000,nullable = false)
     private String description;
-    @Column(name = "date", nullable = true)
+
+    @Column(name = "datetime", nullable = false)
     //@DateTimeFormat(pattern = "dd.MM.yyyy")
-    private Date date;
-    @Column(name = "time", nullable = true)
-    private Date time;
-    @Column(name = "all_tickets", nullable = true)
-    private Integer all_tickets;
-    @Column(name = "free_tickets", nullable = true)
-    private Integer free_tickets;
+    private String datetime;
+
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
 
     public Activity() {
     }
 
-    public Activity(String title, String place, String address, String description, Date date, Date time, Integer all_tickets, Integer free_tickets) {
+    public Activity(String title, String place, String address, String description, String datetime) {
         this.title = title;
         this.place = place;
         this.address = address;
         this.description = description;
-        this.date = date;
-        this.time = time;
-        this.all_tickets = all_tickets;
-        this.free_tickets = free_tickets;
-    }
-
-    public Integer getAll_tickets() {
-        return all_tickets;
-    }
-
-    public void setAll_tickets(Integer all_tickets) {
-        this.all_tickets = all_tickets;
-    }
-
-    public Integer getFree_tickets() {
-        return free_tickets;
-    }
-
-    public void setFree_tickets(Integer free_tickets) {
-        this.free_tickets = free_tickets;
+        this.datetime = datetime;
     }
 
     public Long getId() {
@@ -99,20 +85,5 @@ public class Activity {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
 
 }

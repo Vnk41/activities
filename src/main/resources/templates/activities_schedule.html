@@ -18,11 +18,7 @@
             <label> <b>Описание: </b></label>
             <div th:text=" ${el.description}"></div>
             <label> <b>Дата и время проведения:</b></label>
-            <div th:text="${el.date}"></div>
-            <div th:text=" ${el.time}"></div>
-            <label> <b>Все билеты:</b></label>
-            <div th:text=" ${el.all_tickets}"></div>
-            <div th:text=" ${el.free_tickets}"></div>
+            <div th:text=" ${el.datetime}"></div>
             <a th:href="@{'/activities_schedule/' + ${el.id}}"> Перейти к покупке билета </a>
             <p></p>
         </div>

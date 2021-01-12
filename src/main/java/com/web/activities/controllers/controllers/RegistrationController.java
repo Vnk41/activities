@@ -1,10 +1,9 @@
-package com.web.activities.controllers;
+package com.web.activities.controllers.controllers;
 
 import com.web.activities.controllers.models.Role;
 import com.web.activities.controllers.models.User;
+import com.web.activities.controllers.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -29,7 +28,6 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addUser(User user){
         User UserDB = userRepo.findByUsername(user.getUsername());
-
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

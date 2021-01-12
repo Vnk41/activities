@@ -1,4 +1,4 @@
-package com.web.activities.controllers;
+package com.web.activities.controllers.repos;
 
 import com.web.activities.controllers.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;

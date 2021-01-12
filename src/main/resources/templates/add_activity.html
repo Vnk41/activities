@@ -5,18 +5,15 @@
 </head>
 <body>
     <header th:insert="blocks/header :: header"> </header>
-    <h1> Заполните форму ввода </h1>
-    <h1> Добавленное мероприятие появится на странице "Расписание мероприятия" </h1>
+    <h5> Добавьте мероприятие на сайт</h5>
     <form th:action="@{/add_activity}" method="post">
 
         <div><label> Название: <input type="text" name="title" width="150" /> </label><br></div>
         <div><label> Место: <input type="text" name="place"/> </label><br></div>
         <div><label> Адрес: <input type="text" name="address"/> </label><br></div>
         <div><label> Описание: <input type="text" name="description"/> </label><br></div>
-        <div><label> Дата: <input type="text" name="date" width="150" /> </label><br></div>
-        <div><label> Время: <input type="text" name="time"/> </label><br></div>
-        <div><label> Общее количество мест: <input type="text" name="all_tickets"/> </label><br></div>
-        <div><label> Свободные места: <input type="text" name="free_tickets"/> </label><br></div>
+        <div><label> Дата и время: <input type="text" name="datetime" width="150" /> </label><br></div>
         <div><input type="submit" value="Добавить мероприятие"/></div>
     </form>
+    <h6> После нажатия на кнопку мероприятие появится в разделе "Расписание мероприятий" </h6>
 </body>

@@ -5,8 +5,7 @@
 </head>
 <body>
     <header th:insert="blocks/header :: header"></header>
-    <h1> Заполните форму ввода </h1>
-    <h1> Добавленный сеанс появится на странице "Расписание кинотеатра" </h1>
+    <h5> Добавьте информацию о новом сеансе в систему</h5>
     <form th:action="@{/add_movieshow}" method="post">
 
         <div><label> Название фильма по-русски: <input type="text" name="movie_russian_title" width="150" /> </label><br></div>
@@ -19,4 +18,5 @@
         <div><label> Описание: <input type="text" name="description"/> </label><br></div>
         <div><input type="submit" value="Добавить мероприятие"/></div>
     </form>
+    <h5> Добавленный сеанс появится на странице "Расписание кинотеатра" </h5>
 </body>

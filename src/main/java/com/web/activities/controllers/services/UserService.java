@@ -1,6 +1,6 @@
 package com.web.activities.controllers.services;
 
-import com.web.activities.controllers.UserRepo;
+import com.web.activities.controllers.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

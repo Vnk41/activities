@@ -2,6 +2,7 @@ package com.web.activities.controllers.models;
 
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "ticketmovieshow")
@@ -9,8 +10,22 @@ public class TicketMovieShow {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(name = "movieshowId", nullable = false)
     private Long movieshowId;
+
+   /* @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "movieshow_id")
+    private MovieShow movieShow;
+
+
+    public MovieShow getMovieShow() {
+        return movieShow;
+    }
+
+    public void setMovieShow(MovieShow movieShow) {
+        this.movieShow = movieShow;
+    }*/
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

@@ -1,8 +1,10 @@
-package com.web.activities.controllers;
+package com.web.activities.controllers.controllers;
 
 import com.web.activities.controllers.models.Activity;
 import com.web.activities.controllers.models.Tickets;
 import com.web.activities.controllers.models.User;
+import com.web.activities.controllers.repos.ActivityRepo;
+import com.web.activities.controllers.repos.ActivityTicketsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,11 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -42,10 +40,9 @@ public class ActivityController {
     @PostMapping("/add_activity")
     public String addActivity(@RequestParam String title, @RequestParam String place,
                               @RequestParam String address, @RequestParam String description,
-                              @RequestParam Date date, @RequestParam Date time,
-                              @RequestParam Integer all_tickets, @RequestParam Integer free_tickets, Model model){
+                              @RequestParam String datetime,  Model model){
         //System.out.println(title + place + address + description + date + time + all_tickets + free_tickets);
-        Activity activity = new Activity(title, place, address, description, date, time, all_tickets, free_tickets);
+        Activity activity = new Activity(title, place, address, description, datetime);
         activityRepo.save(activity);
         //System.out.println(title + place + address + description + date + time + all_tickets + free_tickets);
         return "/add_activity";

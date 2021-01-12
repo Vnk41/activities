@@ -1,10 +1,10 @@
-package com.web.activities.controllers;
+package com.web.activities.controllers.controllers;
 
 import com.web.activities.controllers.models.*;
+import com.web.activities.controllers.repos.MovieShowRepo;
+import com.web.activities.controllers.repos.TicketMovieShowRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -60,6 +59,7 @@ public class MovieShowController {
                                                  @PathVariable(value = "id") Long id,
                                              @RequestParam Integer row,
                                              @RequestParam Integer col, Model model){
+        //MovieShow movieShow = movieShowRepo.findById(id);
         TicketMovieShow ticketMovieShow = new TicketMovieShow(id, user, row, col);
         ticketMovieShowRepo.save(ticketMovieShow);
         return "buy_movieshow_tickets";
