@@ -27,7 +27,7 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user){
-        User UserDB = userRepo.findByUsername(user.getUsername());
+
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

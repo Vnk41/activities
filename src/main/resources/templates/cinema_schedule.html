@@ -9,8 +9,6 @@
     <div>
         <h4> Расписание сеансов </h4>
         <div th:each="el : ${movieshows}">
-            <table border = "1"
-
             <label> <b>Название фильма: </b></label>
             <div th:text="${el.movie_russian_title}"></div>
             <label> <b>Дата и время сеанса:</b></label>

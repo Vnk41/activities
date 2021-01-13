@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "tickets")
-public class Tickets {
+public class TicketActivity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -15,7 +15,7 @@ public class Tickets {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Tickets(Long activityId, User user) {
+    public TicketActivity(Long activityId, User user) {
         this.activityId = activityId;
         this.user = user;
     }
