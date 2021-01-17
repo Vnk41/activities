@@ -1,7 +1,9 @@
 package com.web.activities.controllers.controllers;
 
+import com.web.activities.controllers.models.TicketActivity;
 import com.web.activities.controllers.models.TicketMovieShow;
 import com.web.activities.controllers.models.User;
+import com.web.activities.controllers.repos.ActivityTicketsRepo;
 import com.web.activities.controllers.repos.MovieShowRepo;
 import com.web.activities.controllers.repos.TicketMovieShowRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class ProfileController {
 
     @Autowired
     private TicketMovieShowRepo ticketMovieShowRepo;
+
+    @Autowired
+    private ActivityTicketsRepo activityTicketsRepo;
     //private Optional<TicketMovieShow> TicketsMovie;
     //private TicketMovieShow TicketsMovie;
 
@@ -24,8 +29,10 @@ public class ProfileController {
     public String profile(@AuthenticationPrincipal User user, Model model)
     {
         Iterable<TicketMovieShow> TicketsMovie = ticketMovieShowRepo.findByUserId(user.getId());
+        Iterable<TicketActivity> TicketsActivity = activityTicketsRepo.findByUserId(user.getId());
 
         model.addAttribute("TicketsMovie", TicketsMovie);
+        model.addAttribute("TicketsActivity", TicketsActivity);
         model.addAttribute("Username", user.getUsername());
         return "profile";
     }

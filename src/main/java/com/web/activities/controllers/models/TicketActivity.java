@@ -8,15 +8,38 @@ public class TicketActivity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "activityId", nullable = true)
-    private Long activityId;
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "activity_id")
+    private Activity activity;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 
-    public TicketActivity(Long activityId, User user) {
-        this.activityId = activityId;
+    public TicketActivity(){
+
+    }
+
+    public TicketActivity(Activity activity, User user) {
+        this.activity = activity;
         this.user = user;
     }
 
@@ -28,12 +51,5 @@ public class TicketActivity {
         this.id = id;
     }
 
-    public Long getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
-    }
 
 }

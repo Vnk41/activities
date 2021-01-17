@@ -6,12 +6,59 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<div>
+<style>
+    table {
+        margin: auto; /* Выравниваем таблицу по центру окна  */
+    }
+    EmptyPlace{
+        height: 15px;
+    }
+</style>
+<dia>
     <label> Вы зашли под ником:
         <div th:text="${Username}"></div>
     </label>
-    <a>Количество купленных вами билетов:</a>
-    <div th:text="${#lists.size(TicketsMovie)}"> </div>
+    <div>Количество купленных вами билетов на мероприятия:</div>
+    <div th:text="${#lists.size(TicketsActivity)}"> </div>
+
+    <div class="EmptyPlace"> </div>
+    <table border="1">
+        <tr>
+            <th> Название </th>
+            <th> Место </th>
+            <th> Адрес </th>
+            <th> Дата и время </th>
+        </tr>
+        <tr th:each="ticket : ${TicketsActivity}">
+            <div th:each="dataticket : ${ticket.activity}">
+                <td th:text="${dataticket.title}"></td>
+                <td th:text="${dataticket.place}"></td>
+                <td th:text="${dataticket.address}"></td>
+                <td th:text="${dataticket.datetime}"></td>
+            </div>
+        </tr>
+    </table>
+    <p></p>
+
+    <div>Количество купленных вами билетов в кинотеатр:</div>
+    <div th:text="${#lists.size(TicketsMovie)}"></div>
+    <table border="1">
+        <tr>
+            <th> Название фильма </th>
+            <th> Дата и время </th>
+            <th> Ряд </th>
+            <th> Место </th>
+        </tr>
+        <tr th:each="ticketmovie : ${TicketsMovie}">
+            <div th:each="dataticketmovie : ${ticketmovie.movieshow}">
+                <td th:text="${dataticketmovie.movie_russian_title}"></td>
+                <td th:text="${dataticketmovie.datetime}"></td>
+                <td th:text="${ticketmovie.row}"></td>
+                <td th:text="${ticketmovie.col}"></td>
+            </div>
+        </tr>
+    </table>
+
 </div>
 </body>
 </html>

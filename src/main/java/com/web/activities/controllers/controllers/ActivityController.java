@@ -2,6 +2,7 @@ package com.web.activities.controllers.controllers;
 
 import com.web.activities.controllers.models.Activity;
 import com.web.activities.controllers.models.TicketActivity;
+import com.web.activities.controllers.models.TicketMovieShow;
 import com.web.activities.controllers.models.User;
 import com.web.activities.controllers.repos.ActivityRepo;
 import com.web.activities.controllers.repos.ActivityTicketsRepo;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 
 @Controller
@@ -66,8 +68,12 @@ public class ActivityController {
     @PostMapping("/activities_schedule/{id}")
     public String activitiesScheduleIdBuyTickets(@AuthenticationPrincipal User user,
                                                  @PathVariable(value = "id") Long id, Model model){
-        TicketActivity ticketActivity = new TicketActivity(id, user);
+        Activity activity = activityRepo.findById(id).orElse(null);
+        System.out.println(activity.getDescription());
+        TicketActivity ticketActivity = new TicketActivity(activity, user);
         activityTicketsRepo.save(ticketActivity);
+
+
         return "buy_tickets";
     }
 

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -59,9 +61,10 @@ public class MovieShowController {
                                                  @PathVariable(value = "id") Long id,
                                              @RequestParam Integer row,
                                              @RequestParam Integer col, Model model){
-        //MovieShow movieShow = movieShowRepo.findById(id);
-        TicketMovieShow ticketMovieShow = new TicketMovieShow(id, user, row, col);
+        MovieShow movieShow = movieShowRepo.findById(id).orElse(null);
+        TicketMovieShow ticketMovieShow = new TicketMovieShow(movieShow, user, row, col);
         ticketMovieShowRepo.save(ticketMovieShow);
+
         return "buy_movieshow_tickets";
     }
 }

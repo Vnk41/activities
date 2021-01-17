@@ -11,21 +11,9 @@ public class TicketMovieShow {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "movieshowId", nullable = false)
-    private Long movieshowId;
-
-   /* @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "movieshow_id")
-    private MovieShow movieShow;
-
-
-    public MovieShow getMovieShow() {
-        return movieShow;
-    }
-
-    public void setMovieShow(MovieShow movieShow) {
-        this.movieShow = movieShow;
-    }*/
+    private MovieShow movieshow;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
@@ -41,14 +29,6 @@ public class TicketMovieShow {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getMovieshowId() {
-        return movieshowId;
-    }
-
-    public void setMovieshowId(Long movieshowId) {
-        this.movieshowId = movieshowId;
     }
 
     public User getUser() {
@@ -71,12 +51,20 @@ public class TicketMovieShow {
         return col;
     }
 
+    public MovieShow getMovieshow() {
+        return movieshow;
+    }
+
+    public void setMovieshow(MovieShow movieshow) {
+        this.movieshow = movieshow;
+    }
+
     public void setCol(Integer col) {
         this.col = col;
     }
 
-    public TicketMovieShow(Long movieshowId, User user, Integer row, Integer col) {
-        this.movieshowId = movieshowId;
+    public TicketMovieShow(MovieShow movieshow, User user, Integer row, Integer col) {
+        this.movieshow = movieshow;
         this.user = user;
         this.row = row;
         this.col = col;
